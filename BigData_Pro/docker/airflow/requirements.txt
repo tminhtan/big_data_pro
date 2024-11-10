@@ -2,3 +2,7 @@ beautifulsoup4
 tqdm
 pandas
 requests
+psycopg2
+pytz
+openpyxl
+sentence_transformers

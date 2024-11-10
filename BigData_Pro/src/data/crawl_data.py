@@ -2,152 +2,142 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
+from tqdm import tqdm
 
-AIRFLOW_PATH = "/opt/airflow/"
+AIRFLOW_PATH = "/opt/airflow"
+# AIRFLOW_PATH = "."
+data_store=(f'{AIRFLOW_PATH}/')
+product_link = (f'{AIRFLOW_PATH}/data/raw/ProductDetail.csv')
+comment_link = (f'{AIRFLOW_PATH}/data/raw/Comment.csv')
+recommend_link = (f'{AIRFLOW_PATH}/data/proceed/final_pair.csv')
 
-class ProductScraper:
-    def __init__(self, category_id, limit_per_page=1, page_count=1):
-        self.category_id = category_id
-        self.limit_per_page = limit_per_page
-        self.page_count = page_count
-        self.base_url = 'https://tiki.vn/api'
-        self.headers = {
-            'accept': 'application/json, text/plain, */*',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
-            'x-guest-token': 'VhpcjE82CRObQgMxU7GJHamIsDv160Yl'
-        }
+def praser(main_category,json):
+  d = dict()
+  d['main_category'] = main_category
+  d['product_id'] = json['id']
+  d['sku'] = json['sku']
+  d['name'] = json['name']
+  d['short_description'] = json['short_description']
+  d['long_description'] = BeautifulSoup(json['description'], 'lxml').get_text()
+  d['price'] = json['price']
+  d['list_price'] = json['list_price']
+  d['discount'] = json['discount']
+  d['discount_rate'] = json['discount_rate']
+  d['review_count'] = json['review_count']
+  d['inventory_status'] = json['inventory_status']
+  d['stock_item_qty'] = json['stock_item']['qty']
+  d['stock_item_max_sale_qty'] = json['stock_item']['max_sale_qty']
+  d['stock_item_min_sale_qty'] = json['stock_item']['min_sale_qty']
+  try :
+    d['qty_sold'] = json['quantity_sold']['value']
+  except :
+    d['qty_sold'] = 0
+  d['brand_id'] = json['brand']['id']
+  d['brand_name'] = json['brand']['name']
+  d['rating_average'] = json['rating_average']
+  d['day_ago_created'] = json['day_ago_created']
+  d['web_link'] = json['short_url']
+  d['picture'] = json['thumbnail_url']
+  d['categories_id'] = json['categories']['id']
+  d['categories_name'] = json['categories']['name']
+  return d
 
-    def fetch_data(self, endpoint, params):
-        """Make a GET request to the specified endpoint with given parameters."""
-        response = requests.get(f"{self.base_url}/{endpoint}", params=params, headers=self.headers)
-        response.raise_for_status()  # Raise an error for bad responses
-        return response.json()
+def praser_comments(id,json):
+  d = dict()
+  d['product_id'] = id
+  d['comment_id'] = json['id']
+  d['title'] = json['title']
+  d['content'] = json['content']
+  d['thank_count'] = json['thank_count']
+  d['customer_id'] = json['customer_id']
+  d['rating'] = json['rating']
+  d['created_at'] = json['created_at']
+  d['customer_name'] = json['created_by']['full_name']
+  d['is_buyed'] = json['created_by']['purchased']
+  d['purchased_at'] = json['created_by']['purchased_at']
+  return d
 
-    def parse_product_data(self, category, json):
-        """Parse product data from JSON response."""
-        return {
-            'main_category': category,
-            'id': json.get('id'),
-            'sku': json.get('sku'),
-            'name': json.get('name'),
-            'short_description': json.get('short_description'),
-            'long_description': BeautifulSoup(json.get('description', ''), 'lxml').get_text(),
-            'price': json.get('price'),
-            'list_price': json.get('list_price'),
-            'discount': json.get('discount'),
-            'discount_rate': json.get('discount_rate'),
-            'review_count': json.get('review_count'),
-            'inventory_status': json.get('inventory_status'),
-            'stock_item_qty': json['stock_item'].get('qty', 0),
-            'stock_item_max_sale_qty': json['stock_item'].get('max_sale_qty', 0),
-            'stock_item_min_sale_qty': json['stock_item'].get('min_sale_qty', 0),
-            'qty_sold': json.get('quantity_sold', {}).get('value', 0),
-            'brand_id': json['brand'].get('id', 0),
-            'brand_name': json['brand'].get('name', ''),
-            'rating_average': json.get('rating_average'),
-            'day_ago_created': json.get('day_ago_created'),
-            'web_link': json.get('short_url'),
-            'picture': json.get('thumbnail_url'),
-            'categories_id': json['categories'].get('id', []),
-            'categories_name': json['categories'].get('name', [])
-        }
+def craw_data_function(page,limit_product,category_id,page_comment,file_path,time_sleep = 0.1):
+  '''
+  page : Số trang cào dữ liệu
+  limit_product : Số sản phẩm cào mỗi trang
+  category_id : Các category cào dữ liệu [(1789,'dien-thoai-may-tinh-bang'),(1815,'thiet-bi-kts-phu-kien-so'),(1846,'laptop-may-vi-tinh-linh-kien')]
+  page_comment : Số trang lấy comment
+  file_path : Đường dẫn lưu dữ liệu
+  time_sleep : Thời gian chờ giữa mỗi lần cào dữ liệu
+  '''
+  #Hàm cào dữ liệu sản phẩm.
+  def get_productdata(page,limit_product,category_id):
+    product_data = []
+    # Tổng số lượt lặp dựa trên số danh mục, số trang và số sản phẩm mỗi trang
+    total_iterations = len(category_id) * page * limit_product
 
-    def parse_comment_data(self, product_id, json):
-        """Parse comment data from JSON response."""
-        return {
-            'product_id': product_id,
-            'comment_id': json.get('id'),
-            'title': json.get('title'),
-            'content': json.get('content'),
-            'thank_count': json.get('thank_count'),
-            'customer_id': json.get('customer_id'),
-            'rating': json.get('rating'),
-            'created_at': json.get('created_at'),
-            'customer_name': json.get('created_by', {}).get('full_name', ''),
-            'is_buyed': json.get('created_by', {}).get('purchased', False),
-            'purchased_at': json.get('created_by', {}).get('purchased_at', '')
-        }
+    # Tiến trình với tqdm
+    with tqdm(total=total_iterations) as pbar:
+        for category in category_id:
+            for p in range(3, page + 3):
+                headers = {'accept': 'application/json, text/plain, */*','user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+                    'x-guest-token': 'VhpcjE82CRObQgMxU7GJHamIsDv160Yl'}
 
-    def get_product_data(self):
-        """Fetch product data for the given category and return as a list of dictionaries."""
-        product_data = []
+                params = {'limit': limit_product,'include': 'advertisement','aggregations': 2,'version': 'home-persionalized',
+                    'trackity_id': '924411c8-58cf-9481-669b-610dbd1649e0','category': category[0],'page': p,}
+                headers_detail = {'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
+                      'accept':'application/json, text/plain, */*','accept-language':'en-GB-oxendict,en-US;q=0.9,en;q=0.8','x-guest-token':'VhpcjE82CRObQgMxU7GJHamIsDv160Yl'}
+                params_detail = {'platform': 'web','spid': 44434177,'version': 3}
 
-        for category in self.category_id:
-            for p in range(3, self.page_count + 3):  # Adjusting page range to start from 3
-                params = {
-                    'limit': self.limit_per_page,
-                    'include': 'advertisement',
-                    'aggregations': 2,
-                    'version': 'home-persionalized',
-                    'trackity_id': '924411c8-58cf-9481-669b-610dbd1649e0',
-                    'category': category[0],
-                    'page': p
-                }
-
-                # Fetch product listings
-                try:
-                    listings = self.fetch_data('personalish/v1/blocks/listings', params).get('data', [])
-                    for record in listings:
+                # Gửi request để lấy danh sách sản phẩm
+                response = requests.get('https://tiki.vn/api/personalish/v1/blocks/listings', params=params, headers=headers)
+                if response.status_code == 200:
+                    # Lặp qua từng sản phẩm trong danh sách
+                    for record in response.json().get('data'):
                         product_id = record['id']
-                        # Fetch product details
-                        product_details = self.fetch_data(f'v2/products/{product_id}', {'platform': 'web', 'spid': 44434177, 'version': 3})
-                        product_data.append(self.parse_product_data(category[1], product_details))
-                        time.sleep(0.3)  # Rate limit
-                except requests.HTTPError as e:
-                    print(f"Error fetching data for category {category[1]}: {e}")
+                        # Gửi request để lấy chi tiết sản phẩm
+                        response_detail = requests.get(f'https://tiki.vn/api/v2/products/{product_id}', params=params_detail, headers=headers_detail)
+                        time.sleep(time_sleep)  # Tạm dừng giữa các request để tránh bị chặn
 
-        return product_data
+                        if response_detail.status_code == 200:
+                            try:
+                                # Xử lý dữ liệu chi tiết sản phẩm
+                                product_data.append(praser(category[1],response_detail.json()))  # Thay 'praser' bằng hàm thực tế của bạn
+                            except Exception as e:
+                                print(f"Error parsing product {product_id}: {e}")
 
-    def get_comments(self, product_list):
-        """Fetch comments for a list of products."""
-        product_comments = []
+                        # Cập nhật tiến trình sau mỗi sản phẩm (đúng với tổng số sản phẩm dự kiến)
+                        pbar.update(1)
+    return product_data
+  
+  #Hàm cào comment
+  def get_comment(page,product_list):
+    product_comment = []
+    for id in product_list:
 
-        for product_id in product_list:
-            for p in range(1, 11):  # Assuming a fixed page count for comments
-                params_comment = {
-                    'limit': 5,
-                    'include': 'comments,contribute_info,attribute_vote_summary',
-                    'sort': 'score|desc,id|desc,stars|all',
-                    'page': p,
-                    'product_id': product_id
-                }
+      headers_comment = {'accept': 'application/json, text/plain, */*','user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36','x-guest-token': 'VhpcjE82CRObQgMxU7GJHamIsDv160Yl'}
+      for p in range(1,page + 1):
+        params_comment = {'limit': 5,'include': 'comments,contribute_info,attribute_vote_summary','sort': 'score|desc,id|desc,stars|all','page': p,'product_id': id}
+        response_comment = requests.get('https://tiki.vn/api/v2/reviews', params=params_comment, headers=headers_comment)
+        for comment in response_comment.json()['data']:
+          try :
+            product_comment.append(praser_comments(id,comment))
+          except Exception as e:
+            print(id,'error:',e)
+    return product_comment
 
-                # Fetch comments
-                try:
-                    comments = self.fetch_data('v2/reviews', params_comment).get('data', [])
-                    for comment in comments:
-                        product_comments.append(self.parse_comment_data(product_id, comment))
-                except requests.HTTPError as e:
-                    print(f"Error fetching comments for product {product_id}: {e}")
+  print('Cào dữ liệu id sản phẩm:')
+  product_data = get_productdata(page,limit_product,category_id)
+  product_data = pd.DataFrame(product_data)
+  product_data .to_csv(product_link,index=False)
+  print('Cào dữ liệu comment sản phẩm:')
+  product_id_list = product_data.product_id.to_list()
+  comment_data = get_comment(page_comment,product_id_list)
+  comment_data = pd.DataFrame(comment_data)
+  comment_data.to_csv(comment_link,index=False)
+  return True
 
-        return product_comments
-
-def main():
-    CATEGORY_ID = [
-        (1789, 'dien-thoai-may-tinh-bang'),
-        (1815, 'thiet-bi-kts-phu-kien-so'),
-        (1846, 'laptop-may-vi-tinh-linh-kien')
-    ]
-
-    scraper = ProductScraper(CATEGORY_ID)
-    # Fetch product data
-    product_data = scraper.get_product_data()
-
-    # Convert to DataFrame and save to CSV
-    product_df = pd.DataFrame(product_data)
-    product_df.to_csv('/opt/airflow/data/raw/data.csv', encoding='utf-8-sig', index=False)
-
-    # Extract product ID list
-    product_id_list = product_df['id'].tolist()
-
-    # Fetch comments for the products
-    comments_data = scraper.get_comments(product_id_list)
-
-    # Convert comments to DataFrame and save to CSV
-    comments_df = pd.DataFrame(comments_data)
-    comments_df.to_csv('/opt/airflow/data/raw/comment.csv', encoding='utf-8-sig', index=False)
-
-    print("Data scraping completed. Product data and comments have been saved to CSV files.")
 
 if __name__ == "__main__":
-    main()
+  page = 10
+  limit_product = 40
+  page_comment = 10
+  file_path = data_store
+  category_id = [(1789,'dien-thoai-may-tinh-bang'),(1815,'thiet-bi-kts-phu-kien-so'),(1846,'laptop-may-vi-tinh-linh-kien')]
+  craw_data_function(page,limit_product,category_id,page_comment,file_path,time_sleep = 0.1)

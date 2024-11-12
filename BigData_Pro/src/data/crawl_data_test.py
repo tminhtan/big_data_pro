@@ -4,6 +4,16 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import time
 from tqdm import tqdm
+import argparse
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Crawl data with parameters.")
+    parser.add_argument('--param1', type=int, required=True, help="Parameter 1")
+    return parser.parse_args()
+
+args = parse_arguments()
+print(f"{args.param1}")
+
 
 def get_airflow_path():
     # Kiểm tra các dấu hiệu thường gặp của môi trường Docker
@@ -21,8 +31,8 @@ print(f"AIRFLOW_PATH is set to: {AIRFLOW_PATH}")
 
 
 data_store=(f'{AIRFLOW_PATH}/')
-product_link = (f'{AIRFLOW_PATH}/data/raw/ProductDetail.csv')
-comment_link = (f'{AIRFLOW_PATH}/data/raw/Comment.csv')
+product_link = (f'{AIRFLOW_PATH}/data/raw/ProductDetail{args.param1}.csv')
+comment_link = (f'{AIRFLOW_PATH}/data/raw/Comment{args.param1}.csv')
 recommend_link = (f'{AIRFLOW_PATH}/data/proceed/final_pair.csv')
 
 host="host.docker.internal"
@@ -159,7 +169,8 @@ def craw_data_function(page,limit_product,category_id,page_comment,file_path,tim
 if __name__ == "__main__":
   page = 20
   limit_product = 40
-  page_comment = 3
+  page_comment = 4
   file_path = data_store
   category_id = [(1789,'dien-thoai-may-tinh-bang'),(1815,'thiet-bi-kts-phu-kien-so'),(1846,'laptop-may-vi-tinh-linh-kien')]
-  craw_data_function(page,limit_product,category_id,page_comment,file_path,time_sleep = 0.01)
+  category_inuse = [category_id[args.param1]]
+  craw_data_function(page,limit_product,category_inuse,page_comment,file_path,time_sleep = 0.01)

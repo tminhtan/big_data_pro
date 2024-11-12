@@ -1,12 +1,24 @@
 import pandas as pd
 from psycopg2 import sql, connect
 from psycopg2.extras import execute_values
-import datetime
-import pytz
-import requests
+import os
 
-AIRFLOW_PATH = "/opt/airflow"
-# AIRFLOW_PATH = "."
+def get_airflow_path():
+    # Kiểm tra các dấu hiệu thường gặp của môi trường Docker
+    if os.path.exists('/.dockerenv') or os.path.isfile('/proc/self/cgroup'):
+        return "/opt/airflow"
+    else:
+        return "."
+
+# Sử dụng hàm để thiết lập AIRFLOW_PATH
+AIRFLOW_PATH = get_airflow_path()
+print(f"AIRFLOW_PATH is set to: {AIRFLOW_PATH}")
+
+# AIRFLOW_PATH = "/opt/airflow"
+# # AIRFLOW_PATH = "."
+
+
+data_store=(f'{AIRFLOW_PATH}/')
 product_link = (f'{AIRFLOW_PATH}/data/raw/ProductDetail.csv')
 comment_link = (f'{AIRFLOW_PATH}/data/raw/Comment.csv')
 recommend_link = (f'{AIRFLOW_PATH}/data/proceed/final_pair.csv')
@@ -14,10 +26,9 @@ recommend_link = (f'{AIRFLOW_PATH}/data/proceed/final_pair.csv')
 host="host.docker.internal"
 port = 5432
 database = "tikidb"
-user = 'superset'
-password = 'superset'
+user = 'airflow'
+password = 'airflow'
 
-# file_path = './data/raw/ProductDetail.xlsx'
 file_path=product_link
 
 def update_database():
@@ -234,6 +245,7 @@ def update_database():
     comment_df['purchased_at'] = pd.to_datetime(comment_df['purchased_at'], errors='coerce')
 
     # Thêm dữ liệu vào bảng Comment
+    comment_df = comment_df.dropna(subset=['purchased_at'])
     comment_data = comment_df[['comment_id', 'product_id', 'customer_id', 'title', 'content', 'thank_count', 'rating', 'created_at', 'is_buyed', 'purchased_at']]
     comment_insert = comment_data.values.tolist()
     execute_values(cur, "INSERT INTO Comment (comment_id, product_id, customer_id, title, content, thank_count, rating, created_at, is_buyed, purchased_at) VALUES %s ON CONFLICT DO NOTHING", comment_insert)

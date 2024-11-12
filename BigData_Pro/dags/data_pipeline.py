@@ -10,7 +10,7 @@ AIRFLOW_PATH = "/opt/airflow/"
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2024, 11, 7),  # Adjust the start date if necessary
+    'start_date': datetime(2024, 11, 12),  # Adjust the start date if necessary
     'retries': 1,
     'retry_delay': timedelta(minutes=1),
 }

@@ -1,20 +1,35 @@
 import pandas as pd
 from sentence_transformers import SentenceTransformer, util
+import os
 
 # Đường dẫn đến file CSV trong hệ thống tệp
-AIRFLOW_PATH = "/opt/airflow"
-# AIRFLOW_PATH = "."
+def get_airflow_path():
+    # Kiểm tra các dấu hiệu thường gặp của môi trường Docker
+    if os.path.exists('/.dockerenv') or os.path.isfile('/proc/self/cgroup'):
+        return "/opt/airflow"
+    else:
+        return "."
+
+# Sử dụng hàm để thiết lập AIRFLOW_PATH
+AIRFLOW_PATH = get_airflow_path()
+print(f"AIRFLOW_PATH is set to: {AIRFLOW_PATH}")
+
+# AIRFLOW_PATH = "/opt/airflow"
+# # AIRFLOW_PATH = "."
+
+
+data_store=(f'{AIRFLOW_PATH}/')
 product_link = (f'{AIRFLOW_PATH}/data/raw/ProductDetail.csv')
 comment_link = (f'{AIRFLOW_PATH}/data/raw/Comment.csv')
 recommend_link = (f'{AIRFLOW_PATH}/data/proceed/final_pair.csv')
-host = "localhost"
+
+host="host.docker.internal"
 port = 5432
 database = "tikidb"
 user = 'airflow'
 password = 'airflow'
-# file_path = './data/raw/ProductDetail.xlsx'
-file_path=product_link
 
+file_path=product_link
 
     # Đọc dữ liệu từ file CSV
 df = pd.read_csv(file_path)  # Bỏ qua các dòng có lỗi nếu có
@@ -71,8 +86,16 @@ for pair in results:
 
 # Lưu kết quả vào CSV
 results_df = pd.DataFrame(results)
-results_df.assign(
-    product_id1=lambda x: x['Index_List'].apply(lambda idx: idx[0]),
-    product_id2=lambda x: x['Index_List'].apply(lambda idx: idx[1]),
+results_df = results_df.assign(
+    product_id1_temp=lambda x: x['Index_List'].apply(lambda idx: idx[0]),
+    product_id2_temp=lambda x: x['Index_List'].apply(lambda idx: idx[1]),
     similarity=lambda x: x['Similarity'].round(4)
-).drop(columns='Index_List')[['product_id1', 'product_id2', 'similarity']].to_csv(recommend_link, index=False)
+).drop(columns='Index_List')[['product_id1_temp', 'product_id2_temp', 'similarity']]#to_csv(recommend_link, index=False)
+df = df[['product_id']]
+merged_df = pd.merge(results_df, df, left_on='product_id1_temp', right_index=True, how='inner')
+merged_df.rename(columns={'product_id': 'product_id1'}, inplace=True)
+merged_df = pd.merge(merged_df, df, left_on='product_id2_temp', right_index=True, how='inner')
+merged_df.rename(columns={'product_id': 'product_id2'}, inplace=True)
+merged_df = merged_df.drop(columns=['product_id1_temp', 'product_id2_temp'])
+merged_df = merged_df[['product_id1','product_id2','similarity']]
+merged_df.to_csv(recommend_link, index=False)

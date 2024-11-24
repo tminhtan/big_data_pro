@@ -115,7 +115,17 @@ other components that not list in this series
 
 ### Running the Project
 
-1. **Build and run Docker containers**:
+1. Checking folder, file code
+
+   Make sure all folder and file was created, run create_source.bat or create_source.sh to create all missing folder.
+
+   Please checking all folder and file.
+
+2. MAKE SURE YOUR FIREWALL WAS UNBLOCK
+
+3. MAKE SURE YOUR DOCKER HAVE PERMISSION TO RUN
+
+4. **Build and run Docker containers**:
    Change the loction into the 'BigData_pro' folder, that contain all source code, include docker-compose.yml
 
    Up the docker
@@ -123,15 +133,15 @@ other components that not list in this series
    docker-compose up
    ```
 
-4. **Access Apache Airflow**:
+5. **Access Apache Airflow**:
 
    Open your web browser and navigate to `http://localhost:8080` to access the Airflow dashboard with usr/password: superset/superset
 
-5. **Access Apache Superset**:
+6. **Access Apache Superset**:
 
    Open your web browser and navigate to `http://localhost:8088` to access the Superset dashboard with usr/password: admin/admin
 
-6. **Access Apache Superset**:
+7. **Access Apache Superset**:
 
    Open your web browser and navigate to `http://localhost:8000` to access the Adminer dashboard with usr/password: superset/superset
    

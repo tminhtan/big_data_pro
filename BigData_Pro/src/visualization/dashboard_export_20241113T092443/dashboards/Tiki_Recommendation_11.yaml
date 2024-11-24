@@ -1,0 +1,822 @@
+dashboard_title: Tiki Recommendation
+description: null
+css: ''
+slug: null
+certified_by: ''
+certification_details: ''
+published: false
+uuid: c3652097-770d-474f-95c7-9c5712c0b0b1
+position:
+  CHART-4q9Oc6YOK-:
+    children: []
+    id: CHART-4q9Oc6YOK-
+    meta:
+      chartId: 2342
+      height: 50
+      sliceName: 1-1 Number of product
+      uuid: ebc90f4d-29a0-4030-b0fa-359ca676ad82
+      width: 4
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-3s2t6CQnFb
+    type: CHART
+  CHART-b-1XMg9us6:
+    children: []
+    id: CHART-b-1XMg9us6
+    meta:
+      chartId: 2409
+      height: 50
+      sliceName: 1-2 Total Revenue
+      uuid: da4cc4df-0d11-4167-80e3-0e37e2d59773
+      width: 4
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-3s2t6CQnFb
+    type: CHART
+  CHART-explore-2448-1:
+    children: []
+    id: CHART-explore-2448-1
+    meta:
+      chartId: 2448
+      height: 50
+      sliceName: 1-3 AverageDiscount
+      uuid: 1a9b66c2-a258-4773-a2b1-9560b33b2124
+      width: 4
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-3s2t6CQnFb
+    type: CHART
+  CHART-explore-2563-1:
+    children: []
+    id: CHART-explore-2563-1
+    meta:
+      chartId: 2563
+      height: 50
+      sliceName: 1-4 Top 10 qty sold product
+      uuid: b7e9daf8-16f4-4ca1-9832-13837fbd7707
+      width: 12
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-ErQeAYmW_o
+    type: CHART
+  CHART-explore-2640-1:
+    children: []
+    id: CHART-explore-2640-1
+    meta:
+      chartId: 2640
+      height: 50
+      sliceName: 1-5 Top 10 revenue product
+      uuid: 4155e7e4-255a-42e7-93d9-f76ab63d0be5
+      width: 12
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-Ek6R6nJf0y
+    type: CHART
+  CHART-explore-2983-1:
+    children: []
+    id: CHART-explore-2983-1
+    meta:
+      chartId: 2983
+      height: 50
+      sliceName: 2-1 Rating Average
+      uuid: 8beddb40-6145-446e-aba2-acfcd8de16fc
+      width: 6
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-QQSgPtjeLl
+    type: CHART
+  CHART-explore-3022-1:
+    children: []
+    id: CHART-explore-3022-1
+    meta:
+      chartId: 3022
+      height: 50
+      sliceName: 2-2 Rating Distribution
+      uuid: b8c45d60-c28d-44dd-b158-d2f60dcdda1f
+      width: 6
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-QQSgPtjeLl
+    type: CHART
+  CHART-explore-3054-1:
+    children: []
+    id: CHART-explore-3054-1
+    meta:
+      chartId: 3054
+      height: 50
+      sliceName: 2-3 Top 10 Product By Comment
+      uuid: a1528675-2a3a-4678-9816-1854b2768234
+      width: 12
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-f-MWgtLzc
+    type: CHART
+  CHART-explore-3252-1:
+    children: []
+    id: CHART-explore-3252-1
+    meta:
+      chartId: 3252
+      height: 50
+      sliceName: 2-4 Top 10 Product by Rating
+      uuid: 5aa93e94-2b9b-4baa-b684-70e9daeee7b4
+      width: 12
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-XNNc7ZpyAc
+    type: CHART
+  CHART-explore-3557-1:
+    children: []
+    id: CHART-explore-3557-1
+    meta:
+      chartId: 3557
+      height: 50
+      sliceName: 3-1 Number of Brand
+      uuid: 2bce6d9b-70f6-4001-ac87-54e40c258fa0
+      width: 4
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-1vP1F5Chk_
+    type: CHART
+  CHART-explore-3589-1:
+    children: []
+    id: CHART-explore-3589-1
+    meta:
+      chartId: 3589
+      height: 50
+      sliceName: 3-2 Treemap of Brand
+      uuid: ebab845a-dc9a-4a69-a85e-4a49c7987f4d
+      width: 8
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-1vP1F5Chk_
+    type: CHART
+  CHART-explore-3626-1:
+    children: []
+    id: CHART-explore-3626-1
+    meta:
+      chartId: 3626
+      height: 50
+      sliceName: 3-3 Top 10 Qty Sold By Brand
+      uuid: d386a3e1-5a5e-461d-ac86-62eed06d60aa
+      width: 12
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-07_BY1J0v
+    type: CHART
+  CHART-explore-3636-1:
+    children: []
+    id: CHART-explore-3636-1
+    meta:
+      chartId: 3636
+      height: 50
+      sliceName: 3-4 Top 10 Brand by Revenue
+      uuid: 319aedcb-9247-4228-9f66-b93e019b1320
+      width: 12
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    - ROW-DMXvAsQj2h
+    type: CHART
+  CHART-raHXKxyAru:
+    children: []
+    id: CHART-raHXKxyAru
+    meta:
+      chartId: 3751
+      height: 118
+      sliceName: 4-1 Recommend table
+      uuid: 660df425-e190-4410-849a-b6266b17da2c
+      width: 12
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-cyQEqnOFN
+    - ROW-lcuO0I2lKV
+    type: CHART
+  DASHBOARD_VERSION_KEY: v2
+  GRID_ID:
+    children: []
+    id: GRID_ID
+    parents:
+    - ROOT_ID
+    type: GRID
+  HEADER-2hbMntkrZ3:
+    children: []
+    id: HEADER-2hbMntkrZ3
+    meta:
+      background: BACKGROUND_TRANSPARENT
+      headerSize: MEDIUM_HEADER
+      text: "I.Hi\u1EC7u su\u1EA5t s\u1EA3n ph\u1EA9m."
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: HEADER
+  HEADER-XSqKRDZgvI:
+    children: []
+    id: HEADER-XSqKRDZgvI
+    meta:
+      background: BACKGROUND_TRANSPARENT
+      headerSize: MEDIUM_HEADER
+      text: "II.Hi\u1EC7u su\u1EA5t ng\u01B0\u1EDDi d\xF9ng"
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: HEADER
+  HEADER-ni660fMLWG:
+    children: []
+    id: HEADER-ni660fMLWG
+    meta:
+      background: BACKGROUND_TRANSPARENT
+      headerSize: MEDIUM_HEADER
+      text: "III.Hi\u1EC7u su\u1EA5t nh\xE3n hi\u1EC7u"
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: HEADER
+  HEADER_ID:
+    id: HEADER_ID
+    meta:
+      text: Tiki Recommendation
+    type: HEADER
+  ROOT_ID:
+    children:
+    - TABS-BIzWEhbuBU
+    id: ROOT_ID
+    type: ROOT
+  ROW-07_BY1J0v:
+    children:
+    - CHART-explore-3626-1
+    id: ROW-07_BY1J0v
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: ROW
+  ROW-1vP1F5Chk_:
+    children:
+    - CHART-explore-3557-1
+    - CHART-explore-3589-1
+    id: ROW-1vP1F5Chk_
+    meta:
+      '0': ROOT_ID
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: ROW
+  ROW-3s2t6CQnFb:
+    children:
+    - CHART-4q9Oc6YOK-
+    - CHART-b-1XMg9us6
+    - CHART-explore-2448-1
+    id: ROW-3s2t6CQnFb
+    meta:
+      '0': ROOT_ID
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: ROW
+  ROW-DMXvAsQj2h:
+    children:
+    - CHART-explore-3636-1
+    id: ROW-DMXvAsQj2h
+    meta:
+      '0': ROOT_ID
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: ROW
+  ROW-Ek6R6nJf0y:
+    children:
+    - CHART-explore-2640-1
+    id: ROW-Ek6R6nJf0y
+    meta:
+      '0': ROOT_ID
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: ROW
+  ROW-ErQeAYmW_o:
+    children:
+    - CHART-explore-2563-1
+    id: ROW-ErQeAYmW_o
+    meta:
+      '0': ROOT_ID
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: ROW
+  ROW-QQSgPtjeLl:
+    children:
+    - CHART-explore-2983-1
+    - CHART-explore-3022-1
+    id: ROW-QQSgPtjeLl
+    meta:
+      '0': ROOT_ID
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: ROW
+  ROW-XNNc7ZpyAc:
+    children:
+    - CHART-explore-3252-1
+    id: ROW-XNNc7ZpyAc
+    meta:
+      '0': ROOT_ID
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: ROW
+  ROW-f-MWgtLzc:
+    children:
+    - CHART-explore-3054-1
+    id: ROW-f-MWgtLzc
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-TU5txuVQZ3
+    type: ROW
+  ROW-lcuO0I2lKV:
+    children:
+    - CHART-raHXKxyAru
+    id: ROW-lcuO0I2lKV
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    - TAB-cyQEqnOFN
+    type: ROW
+  TAB-TU5txuVQZ3:
+    children:
+    - HEADER-2hbMntkrZ3
+    - ROW-3s2t6CQnFb
+    - ROW-ErQeAYmW_o
+    - ROW-Ek6R6nJf0y
+    - HEADER-XSqKRDZgvI
+    - ROW-QQSgPtjeLl
+    - ROW-f-MWgtLzc
+    - ROW-XNNc7ZpyAc
+    - HEADER-ni660fMLWG
+    - ROW-1vP1F5Chk_
+    - ROW-DMXvAsQj2h
+    - ROW-07_BY1J0v
+    id: TAB-TU5txuVQZ3
+    meta:
+      defaultText: Tab title
+      placeholder: Tab title
+      text: Overview Report
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    type: TAB
+  TAB-cyQEqnOFN:
+    children:
+    - ROW-lcuO0I2lKV
+    id: TAB-cyQEqnOFN
+    meta:
+      defaultText: Tab title
+      placeholder: Tab title
+      text: Recommend
+    parents:
+    - ROOT_ID
+    - TABS-BIzWEhbuBU
+    type: TAB
+  TABS-BIzWEhbuBU:
+    children:
+    - TAB-TU5txuVQZ3
+    - TAB-cyQEqnOFN
+    id: TABS-BIzWEhbuBU
+    meta: {}
+    parents:
+    - ROOT_ID
+    type: TABS
+metadata:
+  chart_configuration:
+    '2563':
+      id: 2563
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2342
+        - 2409
+        - 2448
+        - 2640
+        - 2983
+        - 3022
+        - 3054
+        - 3252
+        - 3557
+        - 3589
+        - 3626
+        - 3636
+        - 3751
+    '2640':
+      id: 2640
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2342
+        - 2409
+        - 2448
+        - 2563
+        - 2983
+        - 3022
+        - 3054
+        - 3252
+        - 3557
+        - 3589
+        - 3626
+        - 3636
+        - 3751
+    '2983':
+      id: 2983
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2342
+        - 2409
+        - 2448
+        - 2563
+        - 2640
+        - 3022
+        - 3054
+        - 3252
+        - 3557
+        - 3589
+        - 3626
+        - 3636
+        - 3751
+    '3054':
+      id: 3054
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2342
+        - 2409
+        - 2448
+        - 2563
+        - 2640
+        - 2983
+        - 3022
+        - 3252
+        - 3557
+        - 3589
+        - 3626
+        - 3636
+        - 3751
+    '3252':
+      id: 3252
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2342
+        - 2409
+        - 2448
+        - 2563
+        - 2640
+        - 2983
+        - 3022
+        - 3054
+        - 3557
+        - 3589
+        - 3626
+        - 3636
+        - 3751
+    '3589':
+      id: 3589
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2342
+        - 2409
+        - 2448
+        - 2563
+        - 2640
+        - 2983
+        - 3022
+        - 3054
+        - 3252
+        - 3557
+        - 3626
+        - 3636
+        - 3751
+    '3626':
+      id: 3626
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2342
+        - 2409
+        - 2448
+        - 2563
+        - 2640
+        - 2983
+        - 3022
+        - 3054
+        - 3252
+        - 3557
+        - 3589
+        - 3636
+        - 3751
+    '3636':
+      id: 3636
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2342
+        - 2409
+        - 2448
+        - 2563
+        - 2640
+        - 2983
+        - 3022
+        - 3054
+        - 3252
+        - 3557
+        - 3589
+        - 3626
+        - 3751
+    '3751':
+      id: 3751
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2342
+        - 2409
+        - 2448
+        - 2563
+        - 2640
+        - 2983
+        - 3022
+        - 3054
+        - 3252
+        - 3557
+        - 3589
+        - 3626
+        - 3636
+  global_chart_configuration:
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded: []
+    chartsInScope:
+    - 2342
+    - 2409
+    - 2448
+    - 2563
+    - 2640
+    - 2983
+    - 3022
+    - 3054
+    - 3252
+    - 3557
+    - 3589
+    - 3626
+    - 3636
+    - 3751
+  color_scheme: d3Category20
+  refresh_frequency: 0
+  expanded_slices: {}
+  label_colors: {}
+  timed_refresh_immune_slices: []
+  cross_filters_enabled: true
+  default_filters: '{}'
+  shared_label_colors:
+    '0': '#ffbb78'
+    SUM(revenue): '#aec7e8'
+    SUM(qty_sold): '#1f77b4'
+    AVG(rating_average): '#98df8a'
+    rating: '#2ca02c'
+    SUM(review_count): '#ff7f0e'
+    COUNT(product_id): '#d62728'
+  color_scheme_domain:
+  - '#1f77b4'
+  - '#aec7e8'
+  - '#ff7f0e'
+  - '#ffbb78'
+  - '#2ca02c'
+  - '#98df8a'
+  - '#d62728'
+  - '#ff9896'
+  - '#9467bd'
+  - '#c5b0d5'
+  - '#8c564b'
+  - '#c49c94'
+  - '#e377c2'
+  - '#f7b6d2'
+  - '#7f7f7f'
+  - '#c7c7c7'
+  - '#bcbd22'
+  - '#dbdb8d'
+  - '#17becf'
+  - '#9edae5'
+  native_filter_configuration:
+  - id: NATIVE_FILTER-Na_GZJenk
+    controlValues:
+      enableEmptyFilter: false
+      defaultToFirstItem: false
+      multiSelect: true
+      searchAllOptions: true
+      inverseSelection: false
+    name: ProductCategory
+    filterType: filter_select
+    targets:
+    - column:
+        name: categories_name
+      datasetUuid: f9797d20-edb1-417b-8f0e-5bf03834dce8
+    defaultDataMask:
+      extraFormData: {}
+      filterState: {}
+      ownState: {}
+    cascadeParentIds: []
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded: []
+    type: NATIVE_FILTER
+    description: ''
+    chartsInScope:
+    - 2342
+    - 2409
+    - 2448
+    - 2563
+    - 2640
+    - 2983
+    - 3022
+    - 3054
+    - 3252
+    - 3557
+    - 3589
+    - 3626
+    - 3636
+    - 3751
+    tabsInScope:
+    - TAB-TU5txuVQZ3
+    - TAB-cyQEqnOFN
+  - id: NATIVE_FILTER-rc-kZGLSR
+    controlValues:
+      enableEmptyFilter: false
+      defaultToFirstItem: false
+      multiSelect: true
+      searchAllOptions: false
+      inverseSelection: false
+    name: Brand
+    filterType: filter_select
+    targets:
+    - column:
+        name: brand_name
+      datasetUuid: f9797d20-edb1-417b-8f0e-5bf03834dce8
+    defaultDataMask:
+      extraFormData: {}
+      filterState: {}
+      ownState: {}
+    cascadeParentIds: []
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded:
+      - 3022
+    type: NATIVE_FILTER
+    description: ''
+    chartsInScope:
+    - 2342
+    - 2409
+    - 2448
+    - 2563
+    - 2640
+    - 2983
+    - 3054
+    - 3252
+    - 3557
+    - 3589
+    - 3626
+    - 3636
+    tabsInScope:
+    - TAB-TU5txuVQZ3
+  - id: NATIVE_FILTER-RPhjcRy3K
+    controlValues:
+      enableEmptyFilter: false
+      defaultToFirstItem: false
+      multiSelect: true
+      searchAllOptions: false
+      inverseSelection: false
+    name: MainCategory
+    filterType: filter_select
+    targets:
+    - column:
+        name: main_category
+      datasetUuid: f9797d20-edb1-417b-8f0e-5bf03834dce8
+    defaultDataMask:
+      extraFormData: {}
+      filterState: {}
+      ownState: {}
+    cascadeParentIds: []
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded:
+      - 3022
+    type: NATIVE_FILTER
+    description: ''
+    chartsInScope:
+    - 2342
+    - 2409
+    - 2448
+    - 2563
+    - 2640
+    - 2983
+    - 3054
+    - 3252
+    - 3557
+    - 3589
+    - 3626
+    - 3636
+    tabsInScope:
+    - TAB-TU5txuVQZ3
+  - id: NATIVE_FILTER-kUlk6m750
+    controlValues:
+      enableEmptyFilter: false
+      defaultToFirstItem: false
+      multiSelect: true
+      searchAllOptions: false
+      inverseSelection: false
+    name: ProductRecommend
+    filterType: filter_select
+    targets:
+    - column:
+        name: suggest_name
+      datasetUuid: e4d58dc3-0eb4-4b91-8f25-a7d95ce62dc6
+    defaultDataMask:
+      extraFormData: {}
+      filterState: {}
+      ownState: {}
+    cascadeParentIds: []
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded:
+      - 2342
+      - 2409
+      - 2448
+      - 2563
+      - 2640
+      - 2983
+      - 3022
+      - 3054
+      - 3252
+      - 3557
+      - 3589
+      - 3626
+      - 3636
+    type: NATIVE_FILTER
+    description: ''
+    chartsInScope:
+    - 3751
+    tabsInScope:
+    - TAB-cyQEqnOFN
+version: 1.0.0

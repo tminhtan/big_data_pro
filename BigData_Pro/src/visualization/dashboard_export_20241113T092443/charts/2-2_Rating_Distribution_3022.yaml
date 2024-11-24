@@ -1,0 +1,26 @@
+slice_name: 2-2 Rating Distribution
+description: null
+certified_by: null
+certification_details: null
+viz_type: histogram
+params:
+  datasource: 25__table
+  viz_type: histogram
+  all_columns_x:
+  - rating
+  adhoc_filters: []
+  row_limit: 50000
+  groupby: []
+  color_scheme: supersetColors
+  link_length: '6'
+  show_legend: true
+  normalized: false
+  cumulative: false
+  extra_form_data: {}
+  dashboards:
+  - 11
+query_context: '{"datasource":{"id":25,"type":"table"},"force":false,"queries":[{"filters":[],"extras":{"having":"","where":""},"applied_time_extras":{},"columns":[],"metrics":[],"annotation_layers":[],"row_limit":50000,"series_limit":0,"order_desc":true,"url_params":{},"custom_params":{},"custom_form_data":{}}],"form_data":{"datasource":"25__table","viz_type":"histogram","all_columns_x":["rating"],"adhoc_filters":[],"row_limit":50000,"groupby":[],"color_scheme":"supersetColors","link_length":"6","show_legend":true,"normalized":false,"cumulative":false,"extra_form_data":{},"dashboards":[11],"force":false,"result_format":"json","result_type":"full"},"result_format":"json","result_type":"full"}'
+cache_timeout: null
+uuid: b8c45d60-c28d-44dd-b158-d2f60dcdda1f
+version: 1.0.0
+dataset_uuid: afd65e67-e331-466d-a9fc-643ec601ea66

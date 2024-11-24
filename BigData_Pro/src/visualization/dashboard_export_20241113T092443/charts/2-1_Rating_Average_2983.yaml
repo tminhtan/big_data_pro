@@ -1,0 +1,58 @@
+slice_name: 2-1 Rating Average
+description: null
+certified_by: null
+certification_details: null
+viz_type: gauge_chart
+params:
+  datasource: 24__table
+  viz_type: gauge_chart
+  slice_id: 2983
+  groupby: []
+  metric:
+    aggregate: AVG
+    column:
+      advanced_data_type: null
+      certification_details: null
+      certified_by: null
+      column_name: rating_average
+      description: null
+      expression: null
+      filterable: true
+      groupby: true
+      id: 767
+      is_certified: false
+      is_dttm: false
+      python_date_format: null
+      type: DECIMAL
+      type_generic: 0
+      verbose_name: null
+      warning_markdown: null
+    datasourceWarning: false
+    expressionType: SIMPLE
+    hasCustomLabel: false
+    label: AVG(rating_average)
+    optionName: metric_1nf7yeyvl2u_r6pfn135euc
+    sqlExpression: null
+  adhoc_filters: []
+  row_limit: 10
+  min_val: 0
+  max_val: 5
+  start_angle: 225
+  end_angle: -45
+  color_scheme: supersetColors
+  font_size: 15
+  number_format: SMART_NUMBER
+  value_formatter: '{value}'
+  show_pointer: true
+  animation: true
+  split_number: 10
+  show_progress: true
+  overlap: true
+  extra_form_data: {}
+  dashboards:
+  - 11
+query_context: '{"datasource":{"id":24,"type":"table"},"force":false,"queries":[{"filters":[],"extras":{"having":"","where":""},"applied_time_extras":{},"columns":[],"metrics":[{"aggregate":"AVG","column":{"advanced_data_type":null,"certification_details":null,"certified_by":null,"column_name":"rating_average","description":null,"expression":null,"filterable":true,"groupby":true,"id":767,"is_certified":false,"is_dttm":false,"python_date_format":null,"type":"DECIMAL","type_generic":0,"verbose_name":null,"warning_markdown":null},"datasourceWarning":false,"expressionType":"SIMPLE","hasCustomLabel":false,"label":"AVG(rating_average)","optionName":"metric_1nf7yeyvl2u_r6pfn135euc","sqlExpression":null}],"annotation_layers":[],"row_limit":10,"series_limit":0,"order_desc":true,"url_params":{},"custom_params":{},"custom_form_data":{}}],"form_data":{"datasource":"24__table","viz_type":"gauge_chart","slice_id":2983,"groupby":[],"metric":{"aggregate":"AVG","column":{"advanced_data_type":null,"certification_details":null,"certified_by":null,"column_name":"rating_average","description":null,"expression":null,"filterable":true,"groupby":true,"id":767,"is_certified":false,"is_dttm":false,"python_date_format":null,"type":"DECIMAL","type_generic":0,"verbose_name":null,"warning_markdown":null},"datasourceWarning":false,"expressionType":"SIMPLE","hasCustomLabel":false,"label":"AVG(rating_average)","optionName":"metric_1nf7yeyvl2u_r6pfn135euc","sqlExpression":null},"adhoc_filters":[],"row_limit":10,"min_val":0,"max_val":5,"start_angle":225,"end_angle":-45,"color_scheme":"supersetColors","font_size":15,"number_format":"SMART_NUMBER","value_formatter":"{value}","show_pointer":true,"animation":true,"split_number":10,"show_progress":true,"overlap":true,"extra_form_data":{},"dashboards":[11],"force":false,"result_format":"json","result_type":"full"},"result_format":"json","result_type":"full"}'
+cache_timeout: null
+uuid: 8beddb40-6145-446e-aba2-acfcd8de16fc
+version: 1.0.0
+dataset_uuid: f9797d20-edb1-417b-8f0e-5bf03834dce8
